@@ -1,0 +1,20 @@
+
+  <div style="margin-left:200px; margin-right:200px;">
+      <table class="table">
+          <tr *ngFor="let e of myExpenses">
+              
+              <td>
+                <a [routerLink]="['/expenses',e.ID]">
+                {{e.Name}}</a>
+              </td>
+              <td>
+                {{e.ExpenseDate | date:'fullDate'}}
+              </td>
+              <td>
+                {{e.Cost | currency:'USD':true}}
+              </td>
+          </tr>
+        </table>
+
+  </div>
+  
