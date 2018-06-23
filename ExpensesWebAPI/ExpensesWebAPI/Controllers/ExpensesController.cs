@@ -30,7 +30,18 @@ namespace ExpensesWebAPI.Controllers
                 return entities.Expenses.FirstOrDefault(e => e.ID == id);
           //  }
         }
+        [Route("api/Expenses/{start}/{end}")]
+        public IEnumerable<Expenses> Get(DateTime start, DateTime end)
+        {
+            if (start == null)
+                start = Convert.ToDateTime("2018-04-01");
+            if (end == null)
+                end = Convert.ToDateTime("2018-04-30");
 
+            return entities.Expenses.Where(e => e.ExpenseDate >= start
+                                                    && e.ExpenseDate <= end)
+                                    .ToList().OrderByDescending(d => d.ExpenseDate);
+        }
         public IHttpActionResult PostExpense(Expenses expense)
         {
             //using (AccountingEntities entities = new AccountingEntities())

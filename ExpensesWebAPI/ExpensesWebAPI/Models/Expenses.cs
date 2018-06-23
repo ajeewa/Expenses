@@ -18,5 +18,6 @@ namespace ExpensesWebAPI.Models
         public string Name { get; set; }
         public Nullable<decimal> Cost { get; set; }
         public Nullable<System.DateTime> ExpenseDate { get; set; }
+        public Nullable<int> CategoryID { get; set; }
     }
 }

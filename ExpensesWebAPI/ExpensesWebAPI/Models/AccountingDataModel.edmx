@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AccountingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AccountingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Expenses">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,12 +13,12 @@
           <Property Name="Name" Type="nchar" MaxLength="30" />
           <Property Name="Cost" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ExpenseDate" Type="datetime" />
+          <Property Name="CategoryID" Type="int" />
         </EntityType>
         <EntityContainer Name="AccountingModelStoreContainer">
           <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AccountingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -30,6 +30,7 @@
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ExpenseDate" Type="DateTime" Precision="3" />
+          <Property Name="CategoryID" Type="Int32" />
         </EntityType>
         <EntityContainer Name="AccountingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Expenses" EntityType="AccountingModel.Expenses" />
@@ -43,6 +44,7 @@
           <EntitySetMapping Name="Expenses">
             <EntityTypeMapping TypeName="AccountingModel.Expenses">
               <MappingFragment StoreEntitySet="Expenses">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
